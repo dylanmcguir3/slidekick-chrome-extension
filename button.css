@@ -1,0 +1,24 @@
+/* FILEPATH: /Users/dylanmcguire/Desktop/slidekick-v0/button.css */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0069d9;
+  }
+  
+  .button:active {
+    background-color: #0053ba;
+  }
+  
