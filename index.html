@@ -1,33 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>ID Highlighter</title>
     <style>
-      body { width: 180px; }
-      button { 
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-       }
-       button:hover {
-        background-color: #0069d9;
-       }
+        body {
+            width: 1000px;
+            height: 1000px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0069d9;
+        }
+
         button:active {
-          background-color: #0062cc;
+            background-color: #0062cc;
+        }
+
+        /* Add any additional styles here */
+
+        /* Style the iframe */
+        iframe {
+            width: 100%; /* Adjust the width as needed */
+            height: 300px; /* Adjust the height as needed */
+            border: none;
         }
     </style>
-  </head>
-  <body>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <button class="button" id="button">Slidekick Activate!</button>
-    <script src="nextSlide.js"></script>
-  </body>
+</head>
+<body>
+<button class="button" id="button">Slidekick Activate!</button>
+<script src="nextSlide.js"></script>
+</body>
 </html>
