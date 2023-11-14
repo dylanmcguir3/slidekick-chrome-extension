@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Floating Toolbar",
+    "version": "1.0",
+    "permissions": ["activeTab", "storage"],
+    "content_scripts": [
+        {
+            "matches": ["https://*.docs.google.com/*"],
+            "js": ["popup.js"],
+            "css": [],
+            "run_at": "document_end"
+        }
+    ]
+}
