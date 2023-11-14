@@ -3,7 +3,7 @@
     "name": "Slidekick",
     "version": "1.0",
     "description": "Next Slide Generation",
-    "permissions": ["scripting", "activeTab", "tabs", "identity", "storage"],
+    "permissions": ["scripting", "activeTab", "storage"],
     "icons": {
       "16": "slidekick-logo.png",
       "32": "slidekick-logo.png",
