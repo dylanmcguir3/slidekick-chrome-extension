@@ -1,40 +1,7 @@
-var container = document.createElement("div");
-container.style.backgroundColor = "lightblue";
-
-var textbox = document.createElement("input");
-textbox.placeholder = "Tell slidekick what to generate...";
-textbox.style.width = "500px";
-textbox.style.height = "25px";
-
-
-container.style.position = "fixed";
-container.style.bottom = "40px";
-container.style.left = "50%";
-container.style.transform = "translateX(-50%)";
-container.style.width = "700px";
-container.style.height = "40px";
-container.style.zIndex = "1000";
-container.style.layout = "flex";
-document.body.appendChild(container);
-container.justifyContent = "center";
-container.alignItems = "center";
-container.appendChild(textbox);
-
-var dragHandle = document.createElement("div");
-dragHandle.style.position = "fixed";
-dragHandle.style.width = "200px"; // Same width as the input
-dragHandle.style.height = "10px"; // A small area above the element for dragging
-dragHandle.style.backgroundColor = "grey"; // Just to make it visible
-dragHandle.style.cursor = "move";
-dragHandle.style.bottom = "40px"; // Positioned above the input element
-// dragHandle.style.left = "50%";
-// dragHandle.style.transform = "translateX(-50%)";
-// dragHandle.style.zIndex = "1001"; // Higher than the input to ensure it's on top
-container.appendChild(dragHandle);
-
 function draggable(element, handle) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
+    /* Make handle drag element */
+    
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     handle.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -68,4 +35,82 @@ function draggable(element, handle) {
     }
 }
 
-draggable(container, dragHandle);
+
+function setFullOpacity() {
+    container.style.opacity = "1.0";
+}
+
+function setReducedOpacity() {
+    container.style.opacity = "0.5";
+}
+
+
+// Add google icon font stylesheet
+let link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0';
+document.head.appendChild(link);
+
+let container = document.createElement("div");
+container.style.backgroundColor = "lightblue";
+container.style.position = "fixed";
+container.style.bottom = "40px";
+container.style.width = "700px";
+container.style.height = "40px";
+container.style.left = (window.innerWidth - parseInt(container.style.width, 10)) / 2 + "px";
+container.style.borderRadius = "10px";
+container.style.zIndex = 1000; // TODO: CHANGE LATER
+container.style.display = "flex";
+container.style.alignItems = "center"; // Align items vertically
+container.style.padding = "0 5px 0 10px"; // Top, Right, Bottom, Left padding
+document.body.appendChild(container);
+
+// Create textbox
+let textbox = document.createElement("input");
+textbox.style.border = "1px solid #ccc";
+textbox.style.borderRadius = "10px";
+textbox.placeholder = "Tell slidekick what to generate...";
+textbox.style.flexGrow = 1; // Allow textbox to fill available space
+textbox.style.height = "60%"; // Set height
+textbox.style.paddingLeft = "5px"
+container.appendChild(textbox);
+
+// Create button
+let sendButton = document.createElement("button");
+sendButton.classList.add("material-symbols-outlined");
+sendButton.textContent = "send"; // Google Material icon text identifier
+sendButton.style.fontSize = "25px"; // Set icon size
+sendButton.style.height = "80%"; // Adjust height as needed
+sendButton.style.marginRight = "7px"; // Add margin if necessary
+sendButton.style.backgroundColor = "transparent"; // Make button background transparent
+sendButton.style.color = "black"; // Set button text color
+sendButton.style.border = "none"; // Remove button border
+sendButton.style.cursor = "pointer";
+container.appendChild(sendButton);
+
+// Create drag handle
+let dragHandle = document.createElement("span");
+dragHandle.classList.add("material-symbols-outlined");
+dragHandle.textContent = "drag_indicator"; // Use Material Icons drag handle
+dragHandle.style.fontSize = "28px"; // Set icon size
+dragHandle.style.color = "black"; // Set icon color
+dragHandle.style.display = "flex"; // Use flex for centering
+dragHandle.style.alignItems = "center";
+dragHandle.style.justifyContent = "center";
+dragHandle.style.cursor = "move";
+container.appendChild(dragHandle);
+
+draggable(container, dragHandle); // Make dragHandle drag container
+
+textbox.addEventListener('focus', setFullOpacity);
+textbox.addEventListener('blur', setReducedOpacity);
+container.addEventListener('mouseenter', setFullOpacity);
+container.addEventListener('mouseleave', 
+    function() {
+        if (document.activeElement !== textbox) {
+            setReducedOpacity();
+        }
+    }
+);
+
+setReducedOpacity();
